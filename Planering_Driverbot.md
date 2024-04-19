@@ -21,3 +21,4 @@ v.22 - Tid för förbättring/ fixa misstag innan uppkörning och inlämmning p�
 
 Designplan:
 
+![Driverbot ElAnders](https://github.com/abbindustrigymnasium/driverbot-elanders/assets/143508677/fa3afb3a-b85d-4b3f-8d36-86fb47b14bd0)
