@@ -6,9 +6,9 @@ Mitt mål med detta projekt är att är att i slutet av projetet ha en färdig b
 grundkraven att kunna styra via en hemsida ska ha möjlighet att köra x antal former när given knapp trycks,
 exmpelvis cirklar och andra former. Om tid och möjlighet finna även lägga till någon slags backlampa eller liknande.
 
-v.17 - Påbörjan av MQTT 
+v.17 - ~~Påbörjan av MQTT~~      ***Färdig***
 
-v.18 - Fortsättning av MQTT, om möjlighet titta över Svelte + design  
+v.18 - ~~Fortsättning av MQTT, om möjlighet titta över Svelte + design~~  ***MQTT är nästan helt klar men har valt attej använda svelte utan endast HTML från grund, har även fixat motorkoden så att både servo och motor fungerar samtidigt.***
 
 v.19 - Svelte + MQTT , se till att inputen på websida överförs till motorn. Förbättra motorkod.
 
