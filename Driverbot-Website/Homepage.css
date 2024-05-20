@@ -1,33 +1,33 @@
-main {
-  position:relative; left: 300px; top:2px;;
+body {
+  background-image: url('https://themepack.me/i/c/749x467/media/g/1886/dark-car-theme-om7.jpg');
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-position: center; /* Centers the image */
+  background-size: cover; /* Scales the image to cover the entire background */
+  background-attachment: fixed; /* Makes the background image stay fixed in place */
 }
 
-h2 {
-  font-family: Impact;
-  font-size: xx-large;
-  color: rgb(49, 6, 6);
+h1 {
+  color: azure;
+  text-align: center;
 }
 
-#button1 {
+.button {
+  display: block; /* Display as block to stack vertically */
+  width: 200px; /* Adjust as needed */
+  margin-left: 15px auto; /* Center horizontally with top and bottom margin */
+  margin-bottom: 20px;
   background-color: #ebe9e9;
   color: black;
-  border: 2px solid #04AA6D;
+  border: 4px solid #227d20;
+  border-radius: 5px;
   font-size: larger;
-  font-family:Impact;  
+  font-family: impact;
+  text-decoration: none; 
+  text-align: center; /* Center text */
+  position: relative; left: 0px;
 }
 
-#button1:hover {
-  background-color: #0a4e26;
+.button:hover {
+  background-color: #4e5f55;
   color: rgb(1, 1, 1);
-}
-
-#button2 {
-    background-color: rgb(223, 221, 221);
-    color: rgb(1, 2, 2);
-    border: 2px solid #326c3f;
-}
-
-#button2:hover {
-    background-color: rgb(92, 11, 11);
-    color: rgb(0, 0, 0);
 }

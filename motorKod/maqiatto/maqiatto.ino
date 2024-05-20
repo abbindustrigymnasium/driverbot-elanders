@@ -1,8 +1,11 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
-
+#include <Servo.h>
 #include "MQTTConnector.h"
 #include "Credentials.h"
+
+#define motorPinRightDir  0 //D2
+#define motorPinRightSpeed 5 //D1
 
 WiFiClient wifiClient;
 PubSubClient mqttClient(wifiClient);
@@ -13,11 +16,22 @@ String clientId = "IoTPractice-" + String(ESP.getChipId());
 /* Incoming data callback. */
 void dataCallback(char* topic, byte* payload, unsigned int length)
 {
+  // Create a null-terminated string from the payload
   char payloadStr[length + 1];
   memset(payloadStr, 0, length + 1);
   strncpy(payloadStr, (char*)payload, length);
+
   Serial.printf("Data    : dataCallback. Topic : [%s]\n", topic);
   Serial.printf("Data    : dataCallback. Payload : %s\n", payloadStr);
+
+  // Check if the payload is "hej"
+  if (strcmp(payloadStr, "hej") == 0) {
+   analogWrite(motorPinRightSpeed, 512);
+   digitalWrite(motorPinRightDir, 1);
+  }
+   if (strcmp(payloadStr, "stop") == 0) {
+   analogWrite(motorPinRightSpeed, 0);
+  }
 }
 
 void performConnect()
@@ -76,7 +90,7 @@ void MQTTBegin()
 
 void MQTTLoop()
 {
-  if(mqttInitCompleted)
+  if (mqttInitCompleted)
   {
     if (!MQTTIsConnected())
     {
@@ -84,4 +98,24 @@ void MQTTLoop()
     }
     mqttClient.loop();
   }
+}
+
+void setup()
+{
+  Serial.begin(115200);
+  WiFi.begin(STA_SSID, STA_PASS);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("");
+  Serial.println("WiFi connected");
+  pinMode(motorPinRightDir, OUTPUT);
+  pinMode(motorPinRightSpeed, OUTPUT);
+  MQTTBegin();
+}
+
+void loop()
+{
+  MQTTLoop();
 }

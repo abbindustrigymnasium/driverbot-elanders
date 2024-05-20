@@ -4,6 +4,9 @@
       <meta charset="utf-8">
       <link rel="stylesheet" href="mqtt.css">
       <link rel="stylesheet" href="mqtt.js">
+         <a href="Homepage.html">
+            <button id="button3">Home</button>
+        </a>
       <title>mqtt-demo: A simple web application that can subscribe to topics from an MQTT broker over websockets</title>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
 
@@ -34,15 +37,15 @@
                 document.getElementById("messages").innerHTML += '<span>ERROR: Connection to: ' + host + ' on port: ' + port + ' failed.</span><br/>'
  
             }  
-           let topic="elvirasofiaandersson@hotmail.com/";
+            let Email="elvirasofiaandersson@hotmail.com/";
             // Called when the client connects
             function onConnect() {
                 // Fetch the MQTT topic from the form
-                topic +=document.getElementById("topic").value;
+                topic = Email + document.getElementById("topic").value;
             console.log(topic);
                 // Print output for the user in the messages div
                 document.getElementById("messages").innerHTML += '<span>Subscribing to: ' + topic + '</span><br/>';
-            
+           
                 // Subscribe to the requested topic
                  client.subscribe(topic);
                   message= new Paho.MQTT.Message("Hello World!");
