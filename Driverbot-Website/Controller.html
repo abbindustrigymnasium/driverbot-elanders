@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL-anders</title>
+    <link rel="stylesheet" href="Controller.css">
+    <script src="Controller.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<header>
+    <h1>DRIVERBOT: EL-ANDERS</h1>
+    <a href="Homepage.html">
+        <button id="Homebutton">Home</button>
+    </a>
+</header>
+
+<div class="message-container">
+    <h1 id="message">Hello!</h1>
+</div>
+<div class="keyboard">
+    <div class="top-row">
+        <div data-key="87" class="key">
+            <p>W</p>
+        </div>
+    </div>
+    <div class="bottom-row">
+        <div data-key="65" class="key">
+            <p>A</p>
+        </div>
+        <div data-key="83" class="key">
+            <p>S</p>
+        </div>
+        <div data-key="68" class="key">
+            <p>D</p>
+        </div>
+    </div>
+</div>
+
+<main>
+    <p>Project Driverbot</p>
+</main>
+
+<div class="right-buttons">
+    <button id="Circle">Drive In Circle</button>
+    <button id="Square">Drive In A Square</button>
+</div>
+
+<footer>
+    <p>&copy; 2024 ElAnders Driverbot</p>
+</footer>
+
+</body>
+</html>

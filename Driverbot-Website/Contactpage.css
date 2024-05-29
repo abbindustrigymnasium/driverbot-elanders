@@ -1,0 +1,84 @@
+/* Existing styles */
+html {
+  color: aliceblue;
+}
+
+body {
+  background-image: url('https://themepack.me/i/c/749x467/media/g/1886/dark-car-theme-om7.jpg');
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-position: center; /* Centers the image */
+  background-size: cover; /* Scales the image to cover the entire background */
+  background-attachment: fixed; /* Makes the background image stay fixed in place */
+  margin-right: 10px;
+}
+
+#button3 {
+  display: block; /* Display as block to stack vertically */
+  width: 200px; /* Adjust as needed */
+  margin-left: 15px auto; /* Center horizontally with top and bottom margin */
+  margin-bottom: 20px;
+  background-color: #000000;
+  color: rgb(197, 197, 197);
+  border: 4px solid #ffffff;
+  border-radius: 5px;
+  font-size: larger;
+  font-family: impact;
+  text-align: center; /* Center text */
+  position: relative; left: 0px;
+}
+
+
+#button3:hover {
+  background-color: #4e5f55;
+  color: rgb(1, 1, 1);
+}
+
+/* New styles for the contact page */
+main {
+  padding: 20px;
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+h2 {
+  color: aliceblue;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  color: aliceblue;
+}
+
+label {
+  margin-bottom: 5px;
+  color: aliceblue;
+}
+
+input, textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #333;
+  color: aliceblue;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+

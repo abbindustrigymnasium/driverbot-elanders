@@ -7,6 +7,8 @@
 #define motorPinRightDir  0 //D2
 #define motorPinRightSpeed 5 //D1
 
+Servo servo;
+
 WiFiClient wifiClient;
 PubSubClient mqttClient(wifiClient);
 
@@ -25,15 +27,22 @@ void dataCallback(char* topic, byte* payload, unsigned int length)
   Serial.printf("Data    : dataCallback. Payload : %s\n", payloadStr);
 
   // Check if the payload is "hej"
-  if (strcmp(payloadStr, "hej") == 0) {
-   analogWrite(motorPinRightSpeed, 512);
+  if (strcmp(payloadStr, "Forward") == 0) {
+   analogWrite(motorPinRightSpeed, 1024);
    digitalWrite(motorPinRightDir, 1);
-  }
-   if (strcmp(payloadStr, "stop") == 0) {
-   analogWrite(motorPinRightSpeed, 0);
-  }
+  } else if (strcmp(payloadStr, "Backward") == 0) {
+   analogWrite(motorPinRightSpeed, 1024);
+   digitalWrite(motorPinRightDir, 0);
+  } else if (strcmp(payloadStr, "Left") == 0) {
+    servo.write(0);
+  } else if (strcmp(payloadStr, "Right") == 0) {
+    servo.write(180);
+  } else if (strcmp(payloadStr, "stop") == 0) {
+    analogWrite(motorPinRightSpeed, 0);
+    servo.write(90);
+ 
 }
-
+}
 void performConnect()
 {
   uint16_t connectionDelay = 5000;
@@ -113,6 +122,9 @@ void setup()
   pinMode(motorPinRightDir, OUTPUT);
   pinMode(motorPinRightSpeed, OUTPUT);
   MQTTBegin();
+
+  servo.attach(D2); // Attach servo to pin D1
+  servo.write(0);   // Initialize servo position to 0 degrees
 }
 
 void loop()
