@@ -57,13 +57,13 @@ function keyPressed(e) {
         startConnect();
     }
     if (e.keyCode === 87) {
-        onSend("Forward");
+        onSend("CursedForward");
     } else if (e.keyCode === 65) {
-        onSend("Left");
+        onSend("CursedLeft");
     } else if (e.keyCode === 83) {
-        onSend("Backward");
+        onSend("CursedBackward");
     } else if (e.keyCode === 68) {
-        onSend("Right");
+        onSend("CursedRight");
     }
     // Clear the previous timeout when a valid key is pressed
     clearTimeout(stopTimeout);

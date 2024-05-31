@@ -28,20 +28,62 @@ void dataCallback(char* topic, byte* payload, unsigned int length)
 
   // Check if the payload is "hej"
   if (strcmp(payloadStr, "Forward") == 0) {
-   analogWrite(motorPinRightSpeed, 1024);
-   digitalWrite(motorPinRightDir, 1);
+    analogWrite(motorPinRightSpeed, 1024);
+    digitalWrite(motorPinRightDir, 1);
+    servo.write(90);
   } else if (strcmp(payloadStr, "Backward") == 0) {
-   analogWrite(motorPinRightSpeed, 1024);
-   digitalWrite(motorPinRightDir, 0);
+    analogWrite(motorPinRightSpeed, 1024);
+    digitalWrite(motorPinRightDir, 0);
+    servo.write(90);
   } else if (strcmp(payloadStr, "Left") == 0) {
     servo.write(0);
   } else if (strcmp(payloadStr, "Right") == 0) {
     servo.write(180);
+  } else if (strcmp(payloadStr, "Circle") == 0) {
+    analogWrite(motorPinRightSpeed, 1024);
+    digitalWrite(motorPinRightDir, 0);
+    servo.write(0);
+      delay(10000); 
+    analogWrite(motorPinRightSpeed, 0);
+    servo.write(90); // Assuming 90 degrees is the neutral position for the servo
   } else if (strcmp(payloadStr, "stop") == 0) {
     analogWrite(motorPinRightSpeed, 0);
     servo.write(90);
- 
-}
+  }
+
+  if (strcmp(payloadStr, "CursedForward") == 0) {
+    analogWrite(motorPinRightSpeed, 1024);
+    digitalWrite(motorPinRightDir, 0);
+    servo.write(0);
+  } else if (strcmp(payloadStr, "CursedBackward") == 0) {
+    analogWrite(motorPinRightSpeed, 1024);
+    digitalWrite(motorPinRightDir, 1);
+    servo.write(180);
+  } else if (strcmp(payloadStr, "CursedLeft") == 0) {
+    analogWrite(motorPinRightSpeed, 1024);
+    digitalWrite(motorPinRightDir, 0);
+  } else if (strcmp(payloadStr, "CursedRight") == 0) {
+    analogWrite(motorPinRightSpeed, 1024);
+    digitalWrite(motorPinRightDir, 1);
+  } else if (strcmp(payloadStr, "CursedCircle") == 0) {
+       int speed = 1024;
+    digitalWrite(motorPinRightDir, 0);
+    analogWrite(motorPinRightSpeed, speed);
+        delay(2200);      
+    digitalWrite(motorPinRightDir, 1);
+    analogWrite(motorPinRightSpeed, speed);
+        delay(2200);
+    digitalWrite(motorPinRightDir, 0);
+    analogWrite(motorPinRightSpeed, speed);
+        delay(2200);      
+    digitalWrite(motorPinRightDir, 1);
+    analogWrite(motorPinRightSpeed, speed);
+        delay(2200);
+    analogWrite(motorPinRightSpeed, 0);
+  } else if (strcmp(payloadStr, "stop") == 0) {
+    analogWrite(motorPinRightSpeed, 0);
+    servo.write(90);
+  }
 }
 void performConnect()
 {
