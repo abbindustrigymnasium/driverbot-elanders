@@ -1,25 +1,37 @@
+<!-- HTML-kod som skapar en kontaktsida för "EL-anders" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Metadatat för teckenuppsättning och skalbarhet -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Contact - EL-anders</title>
+    <!-- Länk till extern CSS-fil -->
     <link rel="stylesheet" href="Contactpage.css">
+    <!-- Länk till extern JavaScript-fil -->
     <script src="Contactpage.js" defer></script>
+    <!-- Länk till EmailJS bibliotek -->
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    
 </head>
 <body>
+    <!-- Sidhuvud med rubrik och knapp til startsidan -->
     <header>
+
         <h1>DRIVERBOT: EL-ANDERS</h1>
+
         <a href="Homepage.html">
-            <button id="button3">Home</button>
+            <button id="Homebutton">Home</button>
         </a>
     </header>
 
+
     <main>
+        <!-- Avsnitt för kontaktformulär -->
         <section>
+
             <h2>Any questions? Contact Me</h2>
+
             <form id="contact-form">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -30,13 +42,17 @@
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
                 
+                <!-- Skicka-knapp för att skicka formuläret -->
                 <button type="submit">Submit</button>
             </form>
         </section>
+        <!-- Paragraf för projektinformation -->
         <p>Project Driverbot</p>
     </main>
 
+    <!-- Sidfot -->
     <footer>
+        <!-- Copyright-information -->
         <p>&copy; 2024 ElAnders Driverbot</p>
     </footer>
 </body>

@@ -1,18 +1,24 @@
+// JavaScript-kod som används för att lyssna efter formulärinsändning och skicka formuläret via EmailJS-tjänsten.
+// Möjliggör för skaparen att ta emot meddelanden av användaren via e-post
 document.addEventListener('DOMContentLoaded', function() {
-    emailjs.init("IVW2Kr0agBakiDAnh"); // Replace "YOUR_USER_ID" with your actual EmailJS user ID
+    // Initialisera EmailJS med användar-ID
+    emailjs.init("IVW2Kr0agBakiDAnh");
 
+    // Lyssna efter formulärinsändning
     document.getElementById('contact-form').addEventListener('submit', function(event) {
         event.preventDefault();
 
-        const serviceID = 'service_cbd19ln'; // Replace "YOUR_SERVICE_ID" with your actual EmailJS service ID
-        const templateID = 'template_6ow4yp8'; // Replace "YOUR_TEMPLATE_ID" with your actual EmailJS template ID
+        // Ange tjänst-ID och mall-ID för EmailJS
+        const serviceID = 'service_cbd19ln'; 
+        const templateID = 'template_6ow4yp8'; 
 
+        // Skicka formuläret via EmailJS
         emailjs.sendForm(serviceID, templateID, this)
             .then(() => {
-                alert('Message sent successfully!');
+                alert('Meddelandet skickades framgångsrikt!');
             }, (error) => {
-                alert('Failed to send the message. Please try again.');
-                console.error('Failed to send the message:', error);
+                alert('Misslyckades med att skicka meddelandet. Försök igen.');
+                console.error('Misslyckades med att skicka meddelandet:', error);
             });
     });
 });

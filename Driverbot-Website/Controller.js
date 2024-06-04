@@ -1,125 +1,131 @@
-// Function to remove activeKey class to all keys
-// Accepts 1 parameter
+//Den här är en kod med JavaScript-funktioner som används för att 
+// hantera tangentbordsinteraktioner och kommunikation med en MQTT-server 
 
-
+// Funktion för att ta bort klassen activeKey från alla tangenter
 function removeActiveClass(e) {
-    // Removes activeKey for everything
     e.target.classList.remove("activeKey");
 }
 
-// Function to change the text in message
-function changeText(e) {
-    if (e === 87) {
-        document.getElementById("message").innerHTML = "Forward";
-    } else if (e === 65) {
-        document.getElementById("message").innerHTML = "Left";
-    } else if (e === 83) {
-        document.getElementById("message").innerHTML = "Backward";
-    } else if (e === 68) {
-        document.getElementById("message").innerHTML = "Right";
-    } else {
-        // Clears the message for invalid keys
-        document.getElementById("message").innerHTML = "Try the W,A,S or D key";
+// Funktion för att ändra texten i meddelandet
+function changeText(keyCode) {
+    const messageElement = document.getElementById("message");
+    switch (keyCode) {
+        case 87:
+            messageElement.innerHTML = "Forward";
+            break;
+        case 65:
+            messageElement.innerHTML = "Left";
+            break;
+        case 83:
+            messageElement.innerHTML = "Backward";
+            break;
+        case 68:
+            messageElement.innerHTML = "Right";
+            break;
+        default:
+            messageElement.innerHTML = "Try the W, A, S, or D key";
     }
 }
 
-// Function to reset the text in message when the key is released
+// Funktion för att återställa texten i meddelandet när tangenten släpps
 function resetText(e) {
-    // Clears the message when the key is released
-    document.getElementById("message").innerHTML = "...";
-    // Remove activeKey class from the key
+    const messageElement = document.getElementById("message");
+    messageElement.innerHTML = "...";
+
     const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
     if (key) {
         key.classList.remove("activeKey");
     }
-    // Clear the previous timeout and set a new one to send "stop"
+
     clearTimeout(stopTimeout);
+    // Starta en timeout för att skicka ett stoppmeddelande efter 1 sekund
     stopTimeout = setTimeout(() => {
         onSend("stop");
-    }, 1000); // Set the timeout period as needed (1000 ms = 1 second)
+    }, 1000);
 }
 
-// Function when user presses on a key
-let stopTimeout; // Variable to hold the timeout ID
-
-// Function called when a key is pressed
+// Funktion som anropas när en tangent trycks ned
 function keyPressed(e) {
-    // Assigns key "div" to key
     const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    // Call changeText to change the message
     changeText(e.keyCode);
-    // Only applies activeKey to the keys displayed in browser
-    if (e.keyCode === 87 || e.keyCode === 65 || e.keyCode === 83 || e.keyCode === 68) {
-        // Adds class activeKey
+
+    // Lägg till klassen activeKey om tangenten är en rörelsetangent
+    if ([87, 65, 83, 68].includes(e.keyCode)) {
         key.classList.add("activeKey");
     }
+
+    // Om mellanslagstangenten trycks ned, starta anslutningen
     if (e.keyCode === 32) {
         startConnect();
     }
-    if (e.keyCode === 87) {
-        onSend("Forward");
-    } else if (e.keyCode === 65) {
-        onSend("Left");
-    } else if (e.keyCode === 83) {
-        onSend("Backward");
-    } else if (e.keyCode === 68) {
-        onSend("Right");
+
+    // Skicka meddelanden till MQTT-servern baserat på tangenten som tryckts ned
+    switch (e.keyCode) {
+        case 87:
+            onSend("Forward");
+            break;
+        case 65:
+            onSend("Left");
+            break;
+        case 83:
+            onSend("Backward");
+            break;
+        case 68:
+            onSend("Right");
+            break;
     }
-    // Clear the previous timeout when a valid key is pressed
+
     clearTimeout(stopTimeout);
 }
 
-// Creates a const array of all the keys on screen
+// Skapar en array med alla tangenter på skärmen och lägger till en lyssnare för övergångshändelser
 const keys = Array.from(document.querySelectorAll(".key"));
-// Listens to the browser and removes activeKey when needed
 keys.forEach(key => key.addEventListener("transitionend", removeActiveClass));
-// Listens to users and when key is pressed calls keyPressed
+
+// Lyssna på händelserna keydown och keyup på fönstret
 window.addEventListener("keydown", keyPressed);
-// Listens to users and when key is released calls resetText
 window.addEventListener("keyup", resetText);
 
-function startConnect() {
-    // Generate a random client ID
-    clientID = "clientID_" + parseInt(Math.random() * 100);
+let stopTimeout; // Variabel för att hålla timeout-ID
 
-    // Fetch the hostname/IP address and port number from the form
-    host = "maqiatto.com";
-    port = 8883;
-    // Initialize new Paho client connection
-    client = new Paho.MQTT.Client(host, Number(port), clientID);
-    // Set callback handlers
-    client.connect({
-        userName: "elvirasofiaandersson@hotmail.com",
-        password: "ElSoAn7823",
-        onSuccess: onConnect,
-    });
+// Funktion för att starta anslutningen till MQTT-servern
+function startConnect() {
+    const clientID = "clientID_" + Math.floor(Math.random() * 100);
+    const host = "maqiatto.com";
+    const port = 8883;
+    const client = new Paho.MQTT.Client(host, Number(port), clientID);
+    const userName = "elvirasofiaandersson@hotmail.com";
+    const password = "ElSoAn7823";
+
+    // Anslut till servern med användarnamn och lösenord
+    client.connect({ userName, password, onSuccess: onConnect });
 }
 
 let Email = "elvirasofiaandersson@hotmail.com/";
-// Called when the client connects
+
+// Funktion som körs när anslutningen till MQTT-servern lyckas
 function onConnect() {
-    // Fetch the MQTT topic from the form
-    topic = Email + "lampa";
+    const topic = Email + "lampa";
     console.log(topic);
-    // Subscribe to the requested topic
+    // Prenumerera på ett ämne och skicka ett testmeddelande
     client.subscribe(topic);
-    message = new Paho.MQTT.Message("Hello World!");
+    const message = new Paho.MQTT.Message("Hello World!");
     message.destinationName = topic;
     client.send(message);
-
 }
 
+// Funktion för att skicka meddelanden till MQTT-servern
 function onSend(message) {
-    // Fetch the MQTT topic from the form
-    topic = Email + "lampa";
+    const topic = Email + "lampa";
     console.log(message);
-    message = new Paho.MQTT.Message(message);
-    message.destinationName = topic;
-    client.send(message);
+    const mqttMessage = new Paho.MQTT.Message(message);
+    mqttMessage.destinationName = topic;
+    client.send(mqttMessage);
 }
 
-// Called when the disconnection button is pressed
+// Funktion för att koppla från MQTT-servern
 function startDisconnect() {
     client.disconnect();
+    // Uppdatera gränssnittet för att visa att anslutningen har avbrutits
     document.getElementById("messages").innerHTML += '<span>Disconnected</span><br/>';
 }

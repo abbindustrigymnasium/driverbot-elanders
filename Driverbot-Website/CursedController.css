@@ -1,7 +1,7 @@
-/* Import Font from Google Fonts */
+/* Koden har desamma stilar som Controller.css med minimal skillnad*/
+
 @import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono");
 
-/* General Styling */
 html {
   color: aliceblue;
 }
@@ -25,26 +25,22 @@ body {
   border-radius: 10px;
 }
 
-/* Styling for Key Container */
 .message-container {
   padding-top: 2.5em;
   text-align: center;
   margin-right: 10px;
 }
 
-/* Top row for keyboard */
 .top-row {
   width: 140px;
   margin: 0 auto;
 }
 
-/* Bottom row for keyboard */
 .bottom-row {
   margin-left: 100px;
   display: inline-flex;
 }
 
-/* Styling for Keys */
 .key {
   background-color: #585d68;
   color: #ffffff;
@@ -59,7 +55,6 @@ body {
   transition: all 0.07s ease;
 }
 
-/* Styling for Active Key */
 .activeKey {
   background-color: maroon;
   transform: scale(1.1);
@@ -68,19 +63,16 @@ body {
   left: 0.2em;
 }
 
-/* Styling for Key Text */
 .key > p {
   font-size: 2em;
   margin: 0;
 }
 
-/* Specific Styling for W Key */
 .key.w-key {
   width: 100px;
   height: 100px;
 }
 
-/* Right Buttons Container */
 .right-buttons {
   position: fixed;
   top: 50%;
@@ -92,7 +84,6 @@ body {
   gap: 10px;
 }
 
-/* Styling for Buttons */
 #Circle {
   background-color: #585d68;
   color: #ffffff;
@@ -109,12 +100,10 @@ body {
   cursor: pointer;
 }
 
-/* Active Style for Buttons */
 #Circle:active {
   background-color: maroon;
 }
 
-/* Button 3 Styling */
 #Homebutton {
   display: block;
   width: 200px;
@@ -128,11 +117,7 @@ body {
   text-align: center;
 }
 
-/* Button 3 Hover Effect */
 #Homebutton:hover {
   background-color: #4e5f55;
   color: rgb(1, 1, 1);
 }
-
-
-

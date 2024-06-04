@@ -1,21 +1,21 @@
-/* Import Font from Google Fonts */
+/*CSS-kod som definerar stilar för kontrollsida*/
+
+/* Importera typsnitt från Google Fonts */
 @import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono");
 
-/* General Styling */
+/* Allmän stil */
 html {
   color: aliceblue;
 }
 
 body {
-  background-image: url('https://themepack.me/i/c/749x467/media/g/1886/dark-car-theme-om7.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
+  background: url('https://themepack.me/i/c/749x467/media/g/1886/dark-car-theme-om7.jpg') no-repeat center center fixed;
   background-size: cover;
-  background-attachment: fixed;
   margin-right: 10px;
   font-family: "Share Tech Mono", monospace;
 }
 
+/* Tangentbord */
 .keyboard {
   padding: 20px;
   max-width: 600px;
@@ -25,26 +25,26 @@ body {
   border-radius: 10px;
 }
 
-/* Styling for Key Container */
+/* Kontainer för meddelanden */
 .message-container {
   padding-top: 2.5em;
   text-align: center;
   margin-right: 10px;
 }
 
-/* Top row for keyboard */
+/* Övre raden för tangentbordet */
 .top-row {
   width: 140px;
   margin: 0 auto;
 }
 
-/* Bottom row for keyboard */
+/* Nedre raden för tangentbordet */
 .bottom-row {
   margin-left: 100px;
   display: inline-flex;
 }
 
-/* Styling for Keys */
+/* Tangentstilar */
 .key {
   background-color: #585d68;
   color: #ffffff;
@@ -59,7 +59,6 @@ body {
   transition: all 0.07s ease;
 }
 
-/* Styling for Active Key */
 .activeKey {
   background-color: maroon;
   transform: scale(1.1);
@@ -68,31 +67,19 @@ body {
   left: 0.2em;
 }
 
-/* Styling for Key Text */
+/* Textstil för tangenter */
 .key > p {
   font-size: 2em;
   margin: 0;
 }
 
-/* Specific Styling for W Key */
+/* Specifik stil för W-tangenten */
 .key.w-key {
   width: 100px;
   height: 100px;
 }
 
-/* Right Buttons Container */
-.right-buttons {
-  position: fixed;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  display: flex;
-  font-family: "Share Tech Mono", monospace;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Styling for Buttons */
+/* Stil för Cirkel knappen */
 #Circle {
   background-color: #585d68;
   color: #ffffff;
@@ -107,18 +94,24 @@ body {
   justify-content: center;
   transition: all 0.07s ease;
   cursor: pointer;
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  flex-direction: column;
+  gap: 10px;
+  font-family: "Share Tech Mono", monospace;
 }
 
-/* Active Style for Buttons */
 #Circle:active {
   background-color: maroon;
 }
 
-/* Button 3 Styling */
+/* Stil för hemknappen */
 #Homebutton {
   display: block;
   width: 200px;
-  margin-left: 0px;
+  margin: 0 auto;
   background-color: #000000;
   color: rgb(197, 197, 197);
   border: 4px solid #ffffff;
@@ -128,11 +121,7 @@ body {
   text-align: center;
 }
 
-/* Button 3 Hover Effect */
 #Homebutton:hover {
   background-color: #4e5f55;
   color: rgb(1, 1, 1);
 }
-
-
-

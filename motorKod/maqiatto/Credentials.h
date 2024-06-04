@@ -11,11 +11,6 @@
 #define MQTT_USERNAME     "elvirasofiaandersson@hotmail.com"
 #define MQTT_KEY          "ElSoAn7823"
 
-
-/* Provide topic as it is denoted in your topic list. 
- * For example mine is : cadominna@gmail.com/topic1
- * To add topics, see https://www.maqiatto.com/configure
- */
 #define TOPIC    "elvirasofiaandersson@hotmail.com/lampa"
 
 #endif /* ARDUINO_CREDENTIALS_H */

@@ -1,52 +1,70 @@
+<!-- HTML-kod som utgör grunderna för websidan där kontrollerna för "Drverbot" visas -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Metadatat för teckenuppsättning och skalbarhet -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>EL-anders</title>
+    <!-- Länk till extern CSS-fil -->
     <link rel="stylesheet" href="Controller.css">
+    <!-- Länk till extern JavaScript-fil -->
     <script src="Controller.js"></script>
+    <!-- Länk till Paho MQTT bibliotek -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
 </head>
 
 <body>
 
+<!-- Sidhuvud -->
 <header>
+
     <h1>DRIVERBOT: EL-ANDERS</h1>
+    <!-- Länk till startsidan med en knapp -->
     <a href="Homepage.html">
         <button id="Homebutton">Home</button>
     </a>
+    <!-- Knapp för att köra i cirkel -->
+    <div>
+        <button id="Circle" onclick="onSend('Circle')">Drive In Circle</button>
+    </div>
 </header>
 
+<!-- Meddelandekontainer -->
 <div class="message-container">
     <h1 id="message">Hello!</h1>
 </div>
+<!-- Tangentbord -->
 <div class="keyboard">
+    <!-- Övre raden för tangentbordet -->
     <div class="top-row">
+        <!-- W-tangenten -->
         <div data-key="87" class="key">
             <p>W</p>
         </div>
     </div>
+    <!-- Nedre raden för tangentbordet -->
     <div class="bottom-row">
+        <!-- A-tangenten -->
         <div data-key="65" class="key">
             <p>A</p>
         </div>
+        <!-- S-tangenten -->
         <div data-key="83" class="key">
             <p>S</p>
         </div>
+        <!-- D-tangenten -->
         <div data-key="68" class="key">
             <p>D</p>
         </div>
     </div>
 </div>
 
+<!-- Huvudinnehåll -->
 <main>
     <p>Project Driverbot</p>
-</main>
-
-<div class="right-buttons">
-    <button id="Circle" onclick="onSend('Circle')">Drive In Circle</button>
-</div>
+</main>   
 
 <footer>
     <p>&copy; 2024 ElAnders Driverbot</p>
