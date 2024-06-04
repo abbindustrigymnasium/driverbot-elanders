@@ -98,6 +98,13 @@ body {
   justify-content: center;
   transition: all 0.07s ease;
   cursor: pointer;
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  flex-direction: column;
+  gap: 10px;
+  font-family: "Share Tech Mono", monospace;
 }
 
 #Circle:active {
